@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/sumCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/txtincome"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="INCOME"
+                android:textSize="20dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/txtexp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/txtincome"
+                android:text="EXPENSE"
+                android:textSize="20dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/txtbl"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/txtexp"
+                android:text="BALANCE"
+                android:textSize="20dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/income"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_below="@id/txtincome"
+                android:text="17000"
+                android:gravity="center"
+                android:textSize="26dp" />
+
+            <TextView
+                android:id="@+id/expenses"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_below="@id/txtincome"
+                android:layout_toRightOf="@id/income"
+                android:text="17000"
+                android:textSize="26dp"
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/balance"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_below="@id/txtincome"
+                android:layout_toRightOf="@id/expenses"
+                android:text="17000"
+                android:gravity="center"
+                android:textSize="26dp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <ListView
+        android:id="@+id/listView"
+        android:layout_below="@id/sumCard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:id="@+id/tambah_catatan"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tambah Catatan"
+        />
+</RelativeLayout>
