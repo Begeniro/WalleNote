@@ -58,11 +58,10 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     //method untuk update transaksi
-    public void updateTransaksi(int id, String judul, String jenis, int jumlah, String keterangan) {
+    public void updateTransaksi(int id, String judul, int jumlah, String keterangan) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_JUDUL, judul);
-        values.put(KEY_JENIS, jenis);
         values.put(KEY_JUMLAH,jumlah);
         values.put(KEY_KETERANGAN, keterangan);
 

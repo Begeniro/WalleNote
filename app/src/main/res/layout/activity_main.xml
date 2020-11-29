@@ -15,7 +15,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:id="@+id/txtincome"
-                android:layout_width="100dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:text="INCOME"
                 android:textSize="20dp"
@@ -23,7 +23,7 @@
 
             <TextView
                 android:id="@+id/txtexp"
-                android:layout_width="100dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/txtincome"
                 android:text="EXPENSE"
@@ -32,7 +32,7 @@
 
             <TextView
                 android:id="@+id/txtbl"
-                android:layout_width="100dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/txtexp"
                 android:text="BALANCE"
@@ -41,7 +41,7 @@
 
             <TextView
                 android:id="@+id/income"
-                android:layout_width="100dp"
+                android:layout_width="130dp"
                 android:layout_height="70dp"
                 android:layout_below="@id/txtincome"
                 android:text="17000"
@@ -50,7 +50,7 @@
 
             <TextView
                 android:id="@+id/expenses"
-                android:layout_width="100dp"
+                android:layout_width="130dp"
                 android:layout_height="70dp"
                 android:layout_below="@id/txtincome"
                 android:layout_toRightOf="@id/income"
@@ -60,7 +60,7 @@
                 />
             <TextView
                 android:id="@+id/balance"
-                android:layout_width="100dp"
+                android:layout_width="130dp"
                 android:layout_height="70dp"
                 android:layout_below="@id/txtincome"
                 android:layout_toRightOf="@id/expenses"

@@ -16,20 +16,20 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <Button
-                android:id="@+id/addincome"
+                android:id="@+id/addexp"
                 android:layout_width="170dp"
                 android:layout_height="match_parent"
                 android:background="@color/colorPrimaryDark"
-                android:text="Income"
+                android:text="Pengeluaran"
                 android:textColor="@color/cardview_light_background"
                 />
 
             <Button
-                android:id="@+id/addexp"
+                android:id="@+id/addincome"
                 android:layout_width="170dp"
                 android:layout_height="match_parent"
                 android:background="@color/cardview_light_background"
-                android:text="EXPENSES" />
+                android:text="Pemasukan" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView

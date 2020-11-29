@@ -1,9 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UpdateCatatan">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_margin="30dp"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/lht_jenis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Jenis"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/hitam"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/txt_judul"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lht_jenis"
+                android:textSize="22sp"
+                android:text="Judul"
+                android:layout_marginBottom="10dp"/>
+            <EditText
+                android:id="@+id/isi_judul"
+                android:textColor="@color/hitam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:layout_marginBottom="10dp"
+                android:layout_toRightOf="@id/txt_judul"
+                android:layout_below="@id/lht_jenis"
+                android:text="Bakso"/>
+
+            <TextView
+                android:layout_below="@id/txt_judul"
+                android:layout_marginBottom="10dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+
+                android:textSize="22sp"
+                android:id="@+id/txt_jumlah"
+                android:text="Jumlah"/>
+            <EditText
+                android:textColor="@color/hitam"
+                android:id="@+id/isi_jumlah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:layout_toRightOf="@id/txt_jumlah"
+                android:layout_below="@id/txt_judul"
+                android:text="90000"/>
+            <TextView
+                android:id="@+id/txt_tanggal"
+                android:layout_marginBottom="10dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_jumlah"
+                android:textSize="22sp"
+                android:text="Tanggal"/>
+            <TextView
+                android:id="@+id/isi_tanggal"
+
+                android:textColor="@color/hitam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:layout_toRightOf="@id/txt_tanggal"
+                android:layout_below="@id/isi_jumlah"
+                android:text="2018-19-9"/>
+
+            <TextView
+                android:id="@+id/txt_keterangan"
+                android:layout_marginBottom="10dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_tanggal"
+                android:textSize="22sp"
+                android:text="Keterangan"/>
+            <EditText
+                android:id="@+id/isi_keterangan"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/hitam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:layout_toRightOf="@id/txt_keterangan"
+                android:layout_below="@id/isi_tanggal"
+                android:text="Makan malam"/>
+
+
+            <Button
+                android:id="@+id/bt_simpan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/isi_keterangan"
+                android:layout_marginTop="20dp"
+                android:text="Simpan" />
+
+            <Button
+                android:id="@+id/bt_batal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bt_simpan"
+                android:text="Batal"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

@@ -25,8 +25,8 @@ public class LihatCatatan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lihat_catatan);
         dbcenter = new DBHelper(this);
-        txjudul=findViewById(R.id.lht_judul);
-        txjenis=findViewById(R.id.isi_jenis);
+        txjenis=findViewById(R.id.lht_jenis);
+        txjudul=findViewById(R.id.isi_judul);
         txjumlah=findViewById(R.id.isi_jumlah);
         txtanggal=findViewById(R.id.isi_tanggal);
         txketerangan=findViewById(R.id.isi_keterangan);
@@ -42,14 +42,14 @@ public class LihatCatatan extends AppCompatActivity {
             cursor.moveToPosition(0);
             idtran = cursor.getString(0).toString();
             judul = cursor.getString(1).toString();
-            jenis = cursor.getString(4).toString();
-            jumlah = cursor.getString(3).toString();
+            jenis = cursor.getString(3).toString();
+            jumlah = cursor.getString(4).toString();
             tanggal = cursor.getString(2).toString();
             keterangan = cursor.getString(5).toString();
 
             txjudul.setText(cursor.getString(1).toString());
-            txjenis.setText(cursor.getString(4).toString());
-            txjumlah.setText(cursor.getString(3).toString());
+            txjenis.setText(cursor.getString(3).toString());
+            txjumlah.setText(cursor.getString(4).toString());
             txtanggal.setText(cursor.getString(2).toString());
             txketerangan.setText(cursor.getString(5).toString());
         }
@@ -78,8 +78,8 @@ public class LihatCatatan extends AppCompatActivity {
     }
     private void showConfirm(final int id){
         new AlertDialog.Builder(this)
-                .setTitle("Hapus Data")
-                .setMessage("Hapus?")
+                .setTitle("Menghapus Data")
+                .setMessage("Hapus Catatan?")
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     @Override

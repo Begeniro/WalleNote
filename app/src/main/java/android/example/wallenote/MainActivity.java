@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         int i = 0;
         int e = 0;
         //mengambil jumlah income user dari sqlite
-        cursor = db.rawQuery("SELECT SUM(jumlah) FROM transaksi WHERE  jenis = 'Income'", null);
+        cursor = db.rawQuery("SELECT SUM(jumlah) FROM transaksi WHERE  jenis = 'Pemasukan'", null);
         cursor.moveToFirst();
         if (cursor.getCount() > 0) //jika hasil query tidak kosong
         {
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         //mengambil jumlah expenses user dari sqlite
-        cursor = db.rawQuery("SELECT SUM(jumlah) FROM transaksi WHERE jenis = 'Expenses'", null);
+        cursor = db.rawQuery("SELECT SUM(jumlah) FROM transaksi WHERE jenis = 'Pengeluaran'", null);
         cursor.moveToFirst();
         if (cursor.getCount() > 0) //jika hasil query tidak kosong
         {

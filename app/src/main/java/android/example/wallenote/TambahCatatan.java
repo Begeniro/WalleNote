@@ -24,7 +24,7 @@ public class TambahCatatan extends AppCompatActivity {
     Button addincome, addexp, save;
     Context context;
     EditText judul, keterangan, jumlah;
-    String jenis = "Income";
+    String jenis = "Pengeluaran";
     DBHelper dbcenter;
     final int sdk = android.os.Build.VERSION.SDK_INT;
 
@@ -43,7 +43,7 @@ public class TambahCatatan extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                jenis = "Income";
+                jenis = "Pemasukan";
                 if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
                     addincome.setBackgroundDrawable(ContextCompat.getDrawable(context, R.color.colorPrimary));
                     addincome.setTextColor(ContextCompat.getColor(context, R.color.putih));
@@ -61,7 +61,7 @@ public class TambahCatatan extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                jenis = "Expenses";
+                jenis = "Pengeluaran";
                 if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
                     addexp.setBackgroundDrawable(ContextCompat.getDrawable(context, R.color.colorPrimary));
                     addexp.setTextColor(ContextCompat.getColor(context, R.color.putih));
