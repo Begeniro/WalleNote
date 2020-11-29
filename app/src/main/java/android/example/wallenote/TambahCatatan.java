@@ -23,26 +23,21 @@ import java.util.Locale;
 public class TambahCatatan extends AppCompatActivity {
     Button addincome, addexp, save;
     Context context;
-    EditText tanggal, judul, keterangan, jumlah;
+    EditText judul, keterangan, jumlah;
     String jenis = "Income";
     DBHelper dbcenter;
     final int sdk = android.os.Build.VERSION.SDK_INT;
-    private DatePickerDialog datePickerDialog;
-    private SimpleDateFormat dateFormatter;
-    private EditText tvDateResult;
-    private Button btDatePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambah_catatan);
         dbcenter = new DBHelper(this);
-        final Button addincome = findViewById(R.id.addincome);
-        final Button addexp = findViewById(R.id.addexp);
-        /* final EditText tanggal = findViewById(R.id.date); */
-        final EditText judul = findViewById(R.id.edtjudul);
-        final EditText keterangan = findViewById(R.id.edtnote);
-        final EditText jumlah = findViewById(R.id.edtjumlah);
+        addincome = findViewById(R.id.addincome);
+        addexp = findViewById(R.id.addexp);
+        judul = findViewById(R.id.edtjudul);
+        keterangan = findViewById(R.id.edtnote);
+        jumlah = findViewById(R.id.edtjumlah);
 
         addincome.setOnClickListener(new View.OnClickListener() {
 
@@ -82,20 +77,7 @@ public class TambahCatatan extends AppCompatActivity {
                 }
             }
         });
-/*
-        dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
-
-        EditText tvDateResult = findViewById(R.id.date);
-        Button btDatePicker = findViewById(R.id.calendar);
-        btDatePicker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDateDialog();
-            }
-        });
-
-*/
-        Button save = findViewById(R.id.btnsave);
+        save = findViewById(R.id.btnsave);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,44 +92,4 @@ public class TambahCatatan extends AppCompatActivity {
             }
         });
     }
-
-    private void showDateDialog() {
-
-        /**
-         * Calendar untuk mendapatkan tanggal sekarang
-         */
-        Calendar newCalendar = Calendar.getInstance();
-
-        /**
-         * Initiate DatePicker dialog
-         */
-        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-
-                /**
-                 * Method ini dipanggil saat kita selesai memilih tanggal di DatePicker
-                 */
-
-                /**
-                 * Set Calendar untuk menampung tanggal yang dipilih
-                 */
-                Calendar newDate = Calendar.getInstance();
-                newDate.set(year, monthOfYear, dayOfMonth);
-
-                /**
-                 * Update TextView dengan tanggal yang kita pilih
-                 */
-                tvDateResult.setText(dateFormatter.format(newDate.getTime()));
-            }
-
-        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
-
-        /**
-         * Tampilkan DatePicker dialog
-         */
-        datePickerDialog.show();
-    }
-
 }

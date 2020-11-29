@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -44,6 +45,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(m);
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String val = arrayList.get(i).get("id_transaksi");
+                Intent n = new Intent(getApplicationContext(),LihatCatatan.class);
+                n.putExtra("key_extra_id", val);
+                startActivity(n);
+            }
+        });
+
     }
     private void getSum(){
         SQLiteDatabase db = dbcenter.getReadableDatabase();

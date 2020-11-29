@@ -65,24 +65,32 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(KEY_JENIS, jenis);
         values.put(KEY_JUMLAH,jumlah);
         values.put(KEY_KETERANGAN, keterangan);
+
         db.update(TABLE_TRANSAKSI, values, KEY_ID_TRANSAKSI + " = ?", new String[]{String.valueOf(id)});
+    }
+
+    public void delete(int id){
+        SQLiteDatabase db=this.getWritableDatabase();
+        String deleteQuery="DELETE FROM "+TABLE_TRANSAKSI+" WHERE "+KEY_ID_TRANSAKSI+" = '"+ id+"'";
+        db.execSQL(deleteQuery);
+        db.close();
     }
 
     public ArrayList<Map<String, String>> getTransaksi(){
         ArrayList<Map<String, String>> arrayList=new ArrayList<>();
         String jenis="";
         int jumlah=0;
-        int id=0;
+        int id_transaksi=0;
         String selectQuery="SELECT "+KEY_ID_TRANSAKSI+","+KEY_JENIS+","+KEY_JUMLAH+" FROM "+TABLE_TRANSAKSI;
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor c=db.rawQuery(selectQuery, null);
         if (c.moveToFirst()) {
             do{
-                id=c.getInt(c.getColumnIndex(KEY_ID_TRANSAKSI));
+                id_transaksi=c.getInt(c.getColumnIndex(KEY_ID_TRANSAKSI));
                 jenis=c.getString(c.getColumnIndex(KEY_JENIS));
                 jumlah=c.getInt(c.getColumnIndex(KEY_JUMLAH));
                 Map<String, String> itemMap=new HashMap<>();
-                itemMap.put(KEY_ID_TRANSAKSI,id+"");
+                itemMap.put(KEY_ID_TRANSAKSI, String.valueOf(id_transaksi));
                 itemMap.put(KEY_JENIS, jenis);
                 itemMap.put(KEY_JUMLAH, String.valueOf(jumlah));
                 arrayList.add(itemMap);
