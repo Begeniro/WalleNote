@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RekapPemasukan">
+    tools:context=".RiwayatPemasukan">
 
     <ListView
         android:id="@+id/r_list_view"

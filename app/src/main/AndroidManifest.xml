@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RekapPemasukan"></activity>
+        <activity android:name=".RiwayatPengeluaran"></activity>
+        <activity android:name=".RiwayatPemasukan" />
         <activity android:name=".UpdateCatatan" />
         <activity android:name=".LihatCatatan" />
         <activity android:name=".TambahCatatan" />

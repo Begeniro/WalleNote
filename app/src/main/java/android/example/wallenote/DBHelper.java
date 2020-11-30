@@ -77,10 +77,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public ArrayList<Map<String, String>> getTransaksi(){
         ArrayList<Map<String, String>> arrayList=new ArrayList<>();
+        int id_transaksi=0;
         String jenis="";
         int jumlah=0;
-        int id_transaksi=0;
-        String selectQuery="SELECT "+KEY_ID_TRANSAKSI+","+KEY_JENIS+","+KEY_JUMLAH+" FROM "+TABLE_TRANSAKSI;
+        String judul="";
+        int tanggal=0;
+
+        String selectQuery="SELECT * FROM "+TABLE_TRANSAKSI;
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor c=db.rawQuery(selectQuery, null);
         if (c.moveToFirst()) {
@@ -88,10 +91,44 @@ public class DBHelper extends SQLiteOpenHelper {
                 id_transaksi=c.getInt(c.getColumnIndex(KEY_ID_TRANSAKSI));
                 jenis=c.getString(c.getColumnIndex(KEY_JENIS));
                 jumlah=c.getInt(c.getColumnIndex(KEY_JUMLAH));
+                judul=c.getString(c.getColumnIndex(KEY_JUDUL));
+                tanggal=c.getInt(c.getColumnIndex(KEY_TANGGAL));
                 Map<String, String> itemMap=new HashMap<>();
                 itemMap.put(KEY_ID_TRANSAKSI, String.valueOf(id_transaksi));
                 itemMap.put(KEY_JENIS, jenis);
                 itemMap.put(KEY_JUMLAH, String.valueOf(jumlah));
+                itemMap.put(KEY_JUDUL, judul);
+                itemMap.put(KEY_TANGGAL, String.valueOf(tanggal));
+                arrayList.add(itemMap);
+            }while (c.moveToNext());
+        }
+        return arrayList;
+    }
+
+    public ArrayList<Map<String, String>> getPengeluaran(){
+        ArrayList<Map<String, String>> arrayList=new ArrayList<>();
+        int id_transaksi=0;
+        String jenis="";
+        int jumlah=0;
+        String judul="";
+        String tanggal="";
+
+        String selectQuery="SELECT * FROM "+TABLE_TRANSAKSI+" WHERE "+KEY_JENIS+" = 'Pengeluaran'";
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor c=db.rawQuery(selectQuery, null);
+        if (c.moveToFirst()) {
+            do{
+                id_transaksi=c.getInt(c.getColumnIndex(KEY_ID_TRANSAKSI));
+                jenis=c.getString(c.getColumnIndex(KEY_JENIS));
+                jumlah=c.getInt(c.getColumnIndex(KEY_JUMLAH));
+                judul=c.getString(c.getColumnIndex(KEY_JUDUL));
+                tanggal=c.getString(c.getColumnIndex(KEY_TANGGAL));
+                Map<String, String> itemMap=new HashMap<>();
+                itemMap.put(KEY_ID_TRANSAKSI, String.valueOf(id_transaksi));
+                itemMap.put(KEY_JENIS, jenis);
+                itemMap.put(KEY_JUMLAH, String.valueOf(jumlah));
+                itemMap.put(KEY_JUDUL, judul);
+                itemMap.put(KEY_TANGGAL, tanggal);
                 arrayList.add(itemMap);
             }while (c.moveToNext());
         }
@@ -100,21 +137,28 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public ArrayList<Map<String, String>> getPemasukan(){
         ArrayList<Map<String, String>> arrayList=new ArrayList<>();
-        String judul="";
-        int jumlah=0;
         int id_transaksi=0;
-        String selectQuery="SELECT "+KEY_ID_TRANSAKSI+","+KEY_JUDUL+","+KEY_JUMLAH+" FROM "+TABLE_TRANSAKSI+" WHERE "+KEY_JENIS+ " = 'Pemasukan'";
+        String jenis="";
+        int jumlah=0;
+        String judul="";
+        String tanggal="";
+
+        String selectQuery="SELECT * FROM "+TABLE_TRANSAKSI+" WHERE "+KEY_JENIS+" = 'Pemasukan'";
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor c=db.rawQuery(selectQuery, null);
         if (c.moveToFirst()) {
             do{
                 id_transaksi=c.getInt(c.getColumnIndex(KEY_ID_TRANSAKSI));
-                judul=c.getString(c.getColumnIndex(KEY_JUDUL));
+                jenis=c.getString(c.getColumnIndex(KEY_JENIS));
                 jumlah=c.getInt(c.getColumnIndex(KEY_JUMLAH));
+                judul=c.getString(c.getColumnIndex(KEY_JUDUL));
+                tanggal=c.getString(c.getColumnIndex(KEY_TANGGAL));
                 Map<String, String> itemMap=new HashMap<>();
                 itemMap.put(KEY_ID_TRANSAKSI, String.valueOf(id_transaksi));
-                itemMap.put(KEY_JUDUL, judul);
+                itemMap.put(KEY_JENIS, jenis);
                 itemMap.put(KEY_JUMLAH, String.valueOf(jumlah));
+                itemMap.put(KEY_JUDUL, judul);
+                itemMap.put(KEY_TANGGAL, tanggal);
                 arrayList.add(itemMap);
             }while (c.moveToNext());
         }

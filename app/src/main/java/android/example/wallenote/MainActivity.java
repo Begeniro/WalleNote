@@ -1,8 +1,6 @@
 package android.example.wallenote;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -16,13 +14,15 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<Map<String, String>> arrayList;
     TextView tvIncome, tvExpanses, tvBalance;
-    Button tambah, rwytPem;
+    Button tambah, rwytPem, rwytPen;
     DBHelper dbcenter;
     Cursor cursor;
 
@@ -38,19 +38,28 @@ public class MainActivity extends AppCompatActivity {
         tvBalance=findViewById(R.id.balance);
         tambah = findViewById(R.id.tambah_catatan);
         rwytPem = findViewById(R.id.riwayat_pemasukan);
-
-        rwytPem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent m = new Intent(MainActivity.this, RekapPemasukan.class);
-                startActivity(m);
-            }
-        });
+        rwytPen = findViewById(R.id.riwayat_pengeluaran);
 
         tambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent m = new Intent(MainActivity.this, TambahCatatan.class);
+                startActivity(m);
+            }
+        });
+
+        rwytPem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent m = new Intent(MainActivity.this, RiwayatPemasukan.class);
+                startActivity(m);
+            }
+        });
+
+        rwytPen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent m = new Intent(MainActivity.this, RiwayatPengeluaran.class);
                 startActivity(m);
             }
         });
@@ -106,6 +115,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadData(){
         arrayList=dbcenter.getTransaksi();
+
+        Collections.sort(arrayList, new Comparator<Map<String, String>>() {
+            @Override
+            public int compare(Map<String, String> t1, Map<String, String> t2) {
+                return t2.get("id_transaksi").compareTo(t1.get("id_transaksi"));
+            }
+        });
+
         SimpleAdapter simpleAdapter=new SimpleAdapter(this, arrayList,
                 android.R.layout.simple_expandable_list_item_2,new String[]{"jenis","jumlah"},
                 new int[]{android.R.id.text1,android.R.id.text2});
