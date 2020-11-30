@@ -98,4 +98,27 @@ public class DBHelper extends SQLiteOpenHelper {
         return arrayList;
     }
 
+    public ArrayList<Map<String, String>> getPemasukan(){
+        ArrayList<Map<String, String>> arrayList=new ArrayList<>();
+        String judul="";
+        int jumlah=0;
+        int id_transaksi=0;
+        String selectQuery="SELECT "+KEY_ID_TRANSAKSI+","+KEY_JUDUL+","+KEY_JUMLAH+" FROM "+TABLE_TRANSAKSI+" WHERE "+KEY_JENIS+ " = 'Pemasukan'";
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor c=db.rawQuery(selectQuery, null);
+        if (c.moveToFirst()) {
+            do{
+                id_transaksi=c.getInt(c.getColumnIndex(KEY_ID_TRANSAKSI));
+                judul=c.getString(c.getColumnIndex(KEY_JUDUL));
+                jumlah=c.getInt(c.getColumnIndex(KEY_JUMLAH));
+                Map<String, String> itemMap=new HashMap<>();
+                itemMap.put(KEY_ID_TRANSAKSI, String.valueOf(id_transaksi));
+                itemMap.put(KEY_JUDUL, judul);
+                itemMap.put(KEY_JUMLAH, String.valueOf(jumlah));
+                arrayList.add(itemMap);
+            }while (c.moveToNext());
+        }
+        return arrayList;
+    }
+
 }

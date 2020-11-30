@@ -76,10 +76,28 @@
         android:layout_height="match_parent" />
 
     <Button
-        android:id="@+id/tambah_catatan"
+        android:id="@+id/riwayat_pemasukan"
         android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Riwayat Pemasukan"
+        />
+
+    <Button
+        android:id="@+id/tambah_catatan"
+        android:layout_toRightOf="@+id/riwayat_pemasukan"
+        android:layout_alignParentBottom="true"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:text="Tambah Catatan"
+        />
+
+    <Button
+        android:id="@+id/riwayat_pengeluaran"
+        android:layout_toRightOf="@+id/tambah_catatan"
+        android:layout_alignParentBottom="true"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Riwayat Pengeluaran"
         />
 </RelativeLayout>

@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<Map<String, String>> arrayList;
     TextView tvIncome, tvExpanses, tvBalance;
-    Button tambah;
+    Button tambah, rwytPem;
     DBHelper dbcenter;
     Cursor cursor;
 
@@ -33,15 +33,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listView=findViewById(R.id.listView);
         dbcenter = new DBHelper(this);
-        tambah = findViewById(R.id.tambah_catatan);
         tvIncome = findViewById(R.id.income);
         tvExpanses = findViewById(R.id.expenses);
         tvBalance=findViewById(R.id.balance);
+        tambah = findViewById(R.id.tambah_catatan);
+        rwytPem = findViewById(R.id.riwayat_pemasukan);
+
+        rwytPem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent m = new Intent(MainActivity.this, RekapPemasukan.class);
+                startActivity(m);
+            }
+        });
 
         tambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent m = new Intent(getApplicationContext(),TambahCatatan.class);
+                Intent m = new Intent(MainActivity.this, TambahCatatan.class);
                 startActivity(m);
             }
         });
@@ -50,11 +59,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String val = arrayList.get(i).get("id_transaksi");
-                Intent n = new Intent(getApplicationContext(),LihatCatatan.class);
+                Intent n = new Intent(MainActivity.this, LihatCatatan.class);
                 n.putExtra("key_extra_id", val);
                 startActivity(n);
             }
         });
+
 
     }
     private void getSum(){
